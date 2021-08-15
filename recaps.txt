@@ -1,0 +1,25 @@
+Recaps:
+
+Execução do app
+
+ - Criação do arquivo src/shared/http/index.ts para armazenar as requisições. Deve-se importar { Router } de express
+e ainda criar uma constante chamada 'routes' para utilizar o método 'Router()'.
+ - No arquivo 'server.ts' é necessário chamar 'routes', criar uma constante chamada 'app' para utilizar o método 'express()',
+é necessário fazer app.use(cors()) caso tenha instalado essa dependencias e ainda fazer app.use(express.json()) e 
+por fim fazer app.use(routes), para chamar todas as rotas/requisições feitas no projeto. Por último, fazer 
+app.listen('port', () => {console.log('mensagem')}) para ouvir a porta e poder fazer as requisições.
+
+Customizando o tratamento de error da aplicação
+
+ - Primeiro criou-se uma classe chamada AppError onde serão tratados todos os erros referentes à aplicação, ou seja,
+tudo que for erro de status diferente de 500 (erro do servidor).
+ - Definiu-se as propriedades de mensagem e status code que serão apenas lidos e um construtor para ambas propriedades.
+ - No server.ts criou-se um middleware (usado para interceptar uma requisição) para ser usado todas vez que retornar um
+erro para mostrar ao usuário qual erro ocorreu.
+
+
+Criação de banco de dados
+
+ - Criou-se um arquivo chamado ormconfig.json e lá foi necessário incluir algumas informações de utilização para o banco de dados.
+ - Também foi criando uma pasta chamada typeorm e lá criou-se um arquivo index.ts para criar uma conexão para o banco de dados.
+Inclusive foi necessário importar no server.ts.
