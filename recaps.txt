@@ -23,3 +23,17 @@ Criação de banco de dados
  - Criou-se um arquivo chamado ormconfig.json e lá foi necessário incluir algumas informações de utilização para o banco de dados.
  - Também foi criando uma pasta chamada typeorm e lá criou-se um arquivo index.ts para criar uma conexão para o banco de dados.
 Inclusive foi necessário importar no server.ts.
+
+Criando uma migration
+
+ - Necessário rodar o comando yarn typeorm migration:create -n 'nome da migration (pode ser qualquer um)', depois disso incluir 
+no método up, await queryRunner.createTable(new Table({ ... })) para criar a tabela e seu array de colunas.
+ - Usar o tipo uuid e como default uuid_generate_v4() e também generationStrategy: uuid para o id.
+ - Para o método down usar await queryRunner.dropTable('nomeTabela')
+
+Entidade
+
+ - Necessário criar um arquivo com o nome da classe que deseja dentro da pasta modules/(nome)/typeorm/entities
+ - Criar classe nesse arquivo, com os nomes das propriedades da entidade e seus respectivos decorators.
+ - Descomentar linhas de strictPropertyInitialization, experimentalDecorators e emitDecoratorMetadata.
+ - strictPropertyInitialization colocar como false.
